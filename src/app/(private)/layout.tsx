@@ -1,3 +1,4 @@
+"use client";
 import {
   SidebarInset,
   SidebarProvider,
@@ -14,13 +15,24 @@ import {
 } from "@/components/ui/breadcrumb";
 import { Separator } from "@radix-ui/react-separator";
 import LoginLogoutButton from "@/components/LoginLogoutButton";
+import { useAuth } from "@/contexts/AuthContext";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // TODO - Validar se o usuário está logado
+  const { user, loading } = useAuth();
+  const router = useRouter();
+
+  // useEffect(() => {
+  //   if (!loading && !user) {
+  //     console.log({ user, page: "dashboard" });
+  //     router.push("/login"); // Redireciona para o login se o usuário não estiver logado
+  //   }
+  // }, [user, loading, router]);
 
   return (
     <SidebarProvider>

@@ -1,3 +1,5 @@
+"use client";
+
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import {
@@ -11,12 +13,14 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import SignInWithGoogleButton from "./SignInWithGoogleButton";
 import Link from "next/link";
-import { login } from "@/lib/auth-actions";
+import { useAuth } from "@/contexts/AuthContext";
 
 export function LoginForm({
   className,
   ...props
 }: React.ComponentPropsWithoutRef<"div">) {
+  const { login } = useAuth();
+
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props}>
       <Card>
