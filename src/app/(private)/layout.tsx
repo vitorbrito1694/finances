@@ -27,13 +27,6 @@ export default function RootLayout({
   const { user, loading } = useAuth();
   const router = useRouter();
 
-  // useEffect(() => {
-  //   if (!loading && !user) {
-  //     console.log({ user, page: "dashboard" });
-  //     router.push("/login"); // Redireciona para o login se o usuário não estiver logado
-  //   }
-  // }, [user, loading, router]);
-
   return (
     <SidebarProvider>
       <AppSidebar />

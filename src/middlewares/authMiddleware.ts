@@ -14,7 +14,6 @@ export async function authMiddleware(req: NextRequest) {
 
   const publicRoute = publicRoutes.find((route) => route.path === path);
   const token = req.cookies.get("sb-jqjgactnasscdulmmlpk-auth-token.0");
-  console.log({ token });
 
   if (!token && publicRoute) {
     console.log("Token not found but the route is public");
