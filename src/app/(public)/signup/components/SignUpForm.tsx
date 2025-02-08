@@ -20,9 +20,9 @@ export function SignUpForm({
     <div className={cn("flex flex-col gap-6", className)} {...props}>
       <Card>
         <CardHeader>
-          <CardTitle className="text-2xl">Login</CardTitle>
+          <CardTitle className="text-2xl">Novo Cadastro</CardTitle>
           <CardDescription>
-            Enter your email below to login to your account
+            Insira seus dados para criar uma conta
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -30,22 +30,22 @@ export function SignUpForm({
             <div className="flex flex-col gap-6">
               <div className="grid gap-2 grid-cols-2">
                 <div>
-                  <Label htmlFor="first_name">First Name</Label>
+                  <Label htmlFor="first_name">Primeiro Nome</Label>
                   <Input
                     id="first_name"
                     type="text"
                     name="first_name"
-                    placeholder="John"
+                    placeholder="João"
                     required
                   />
                 </div>
                 <div>
-                  <Label htmlFor="last_name">Last Name</Label>
+                  <Label htmlFor="last_name">Sobrenome</Label>
                   <Input
                     id="last_name"
                     type="text"
                     name="last_name"
-                    placeholder="Doe"
+                    placeholder="Da Silva"
                     required
                   />
                 </div>
@@ -56,30 +56,30 @@ export function SignUpForm({
                   id="email"
                   type="email"
                   name="email"
-                  placeholder="m@example.com"
+                  placeholder="meuemail@exemplo.com"
                   required
                 />
               </div>
               <div className="grid gap-2">
                 <div className="flex items-center">
-                  <Label htmlFor="password">Password</Label>
+                  <Label htmlFor="password">Senha</Label>
                   <Link
                     href="#"
                     className="ml-auto inline-block text-sm underline-offset-4 hover:underline"
                   >
-                    Forgot your password?
+                    Esqueçeu sua senha?
                   </Link>
                 </div>
                 <Input id="password" type="password" name="password" required />
               </div>
               <Button formAction={signup} type="submit" className="w-full">
-                Login
+                Concluir Cadastro
               </Button>
             </div>
             <div className="mt-4 text-center text-sm">
-              Don&apos;t have an account?{" "}
+              Já possui uma conta?{" "}
               <Link href="/login" className="underline underline-offset-4">
-                Sign in
+                Entrar
               </Link>
             </div>
           </form>

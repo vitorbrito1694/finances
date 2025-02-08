@@ -39,31 +39,31 @@ export function LoginForm({
                   id="email"
                   type="email"
                   name="email"
-                  placeholder="m@example.com"
+                  placeholder="meuemail@exemplo.com"
                   required
                 />
               </div>
               <div className="grid gap-2">
                 <div className="flex items-center">
-                  <Label htmlFor="password">Password</Label>
+                  <Label htmlFor="password">Senha</Label>
                   <a
                     href="#"
                     className="ml-auto inline-block text-sm underline-offset-4 hover:underline"
                   >
-                    Forgot your password?
+                    Esqueçeu sua senha?
                   </a>
                 </div>
                 <Input id="password" type="password" name="password" required />
               </div>
               <Button formAction={login} type="submit" className="w-full">
-                Login
+                Entrar
               </Button>
               <SignInWithGoogleButton />
             </div>
             <div className="mt-4 text-center text-sm">
-              Don&apos;t have an account?{" "}
+              Não tem uma conta?{" "}
               <Link href="/signup" className="underline underline-offset-4">
-                Sign up
+                Cadastrar-se
               </Link>
             </div>
           </form>

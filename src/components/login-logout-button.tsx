@@ -15,20 +15,23 @@ const LoginButton = () => {
           signout();
         }}
       >
-        Log out
+        Sair
       </Button>
     );
   }
-  return (
-    <Button
-      variant="outline"
-      onClick={() => {
-        router.push("/login");
-      }}
-    >
-      Login
-    </Button>
-  );
+
+  if (!user && !loading) {
+    return (
+      <Button
+        variant="outline"
+        onClick={() => {
+          router.push("/login");
+        }}
+      >
+        Entrar
+      </Button>
+    );
+  }
 };
 
 export default LoginButton;

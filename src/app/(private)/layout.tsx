@@ -1,4 +1,5 @@
 "use client";
+
 import {
   SidebarInset,
   SidebarProvider,
@@ -14,19 +15,12 @@ import {
   BreadcrumbPage,
 } from "@/components/ui/breadcrumb";
 import { Separator } from "@radix-ui/react-separator";
-import LoginLogoutButton from "@/components/LoginLogoutButton";
-import { useAuth } from "@/contexts/AuthContext";
-import { useRouter } from "next/navigation";
-import { useEffect } from "react";
 
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const { user, loading } = useAuth();
-  const router = useRouter();
-
   return (
     <SidebarProvider>
       <AppSidebar />
@@ -49,7 +43,6 @@ export default function RootLayout({
               </BreadcrumbList>
             </Breadcrumb>
           </div>
-          <LoginLogoutButton />
         </header>
         <div className="flex flex-1 flex-col gap-4 p-4">{children}</div>
       </SidebarInset>

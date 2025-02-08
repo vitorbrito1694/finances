@@ -10,7 +10,7 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: "Finances App",
-  description: "A simple way to manage your finances",
+  description: "Gerencie Seu Dinheiro com Precisão e Tranquilidade!",
 };
 
 export default function RootLayout({

@@ -17,7 +17,7 @@ export default function SignInWithGoogleButton() {
           fill="currentColor"
         />
       </svg>
-      Login with Google
+      Entrar com o Google
     </Button>
   );
 }
