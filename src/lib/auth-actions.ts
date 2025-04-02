@@ -8,17 +8,18 @@ import { createClient } from "@/utils/supabase/server";
 export async function login(formData: FormData) {
   const supabase = await createClient();
 
-  // type-casting here for convenience
-  // in practice, you should validate your inputs
-  const data = {
+  const dataInput = {
     email: formData.get("email") as string,
     password: formData.get("password") as string,
   };
 
-  const { error } = await supabase.auth.signInWithPassword(data);
+  const { error, data } = await supabase.auth.signInWithPassword(dataInput);
 
   if (error) {
+    console.log(error);
     redirect("/error");
+  } else {
+    console.log(data);
   }
 
   revalidatePath("/dashboard", "page");
@@ -28,11 +29,11 @@ export async function login(formData: FormData) {
 export async function signup(formData: FormData) {
   const supabase = await createClient();
 
-  // type-casting here for convenience
-  // in practice, you should validate your inputs
+  console.log(formData);
+
   const firstName = formData.get("first-name") as string;
   const lastName = formData.get("last-name") as string;
-  const data = {
+  const dataInput = {
     email: formData.get("email") as string,
     password: formData.get("password") as string,
     options: {
@@ -43,10 +44,13 @@ export async function signup(formData: FormData) {
     },
   };
 
-  const { error } = await supabase.auth.signUp(data);
+  const { error, data } = await supabase.auth.signUp(dataInput);
 
   if (error) {
+    console.log(error);
     redirect("/error");
+  } else {
+    console.log(data);
   }
 
   revalidatePath("/", "layout");
@@ -83,4 +87,20 @@ export async function signInWithGoogle() {
   }
 
   redirect(data.url);
+}
+
+export async function resetPassword(formData: FormData) {
+  const supabase = await createClient();
+
+  const { error, data } = await supabase.auth.resetPasswordForEmail(
+    formData.get("email") as string
+  );
+
+  if (error) {
+    console.log(error);
+    redirect("/error");
+  } else {
+    console.log(data);
+    redirect("/login");
+  }
 }

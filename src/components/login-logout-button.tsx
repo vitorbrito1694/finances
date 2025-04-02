@@ -3,12 +3,15 @@
 import { Button } from "./ui/button";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/contexts/AuthContext";
+import { useEffect } from "react";
 
 const LoginButton = () => {
-  const { user, loading, signout } = useAuth();
+  const { isAuth, signout } = useAuth();
   const router = useRouter();
 
-  if (user && !loading) {
+  useEffect(() => {}, [isAuth]);
+
+  if (isAuth) {
     return (
       <Button
         onClick={() => {
@@ -20,7 +23,7 @@ const LoginButton = () => {
     );
   }
 
-  if (!user && !loading) {
+  if (!isAuth) {
     return (
       <Button
         variant="outline"

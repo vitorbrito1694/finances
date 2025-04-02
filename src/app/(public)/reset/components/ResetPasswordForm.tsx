@@ -12,15 +12,14 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import SignInWithGoogleButton from "./SignInWithGoogleButton";
 import Link from "next/link";
 import { useAuth } from "@/contexts/AuthContext";
 
-export function LoginForm({
+export function ResetPasswordForm({
   className,
   ...props
 }: React.ComponentPropsWithoutRef<"div">) {
-  const { login } = useAuth();
+  const { resetPassword } = useAuth();
 
   const {
     register,
@@ -33,17 +32,16 @@ export function LoginForm({
     const formData = new FormData();
 
     formData.append("email", data.email);
-    formData.append("name", data.password);
-    login(formData);
+    resetPassword(formData);
   };
 
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props}>
       <Card>
         <CardHeader>
-          <CardTitle className="text-2xl">Entrar</CardTitle>
+          <CardTitle className="text-2xl">Redefinir Senha</CardTitle>
           <CardDescription>
-            Insira Email e senha para acessar sua conta
+            Insira seu e-mail para redefinir sua senha
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -61,29 +59,9 @@ export function LoginForm({
                 />
                 {errors.email && <span>O e-mail é obrigatório.</span>}
               </div>
-              <div className="grid gap-2">
-                <div className="flex items-center">
-                  <Label htmlFor="password">Senha</Label>
-                  <a
-                    href="/reset"
-                    className="ml-auto inline-block text-sm underline-offset-4 hover:underline"
-                  >
-                    Esqueçeu sua senha?
-                  </a>
-                </div>
-                <Input
-                  {...register("password", { required: true })}
-                  id="password"
-                  type="password"
-                  name="password"
-                  required
-                />
-                {errors.password && <span>A senha é obrigatória.</span>}
-              </div>
               <Button type="submit" className="w-full">
-                Entrar
+                Redefinir
               </Button>
-              <SignInWithGoogleButton />
             </div>
             <div className="mt-4 text-center text-sm">
               Não tem uma conta?{" "}

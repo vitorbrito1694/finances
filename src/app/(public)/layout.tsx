@@ -6,13 +6,14 @@ import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 import LoginButton from "@/components/login-logout-button";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/contexts/AuthContext";
+import { Skeleton } from "@/components/ui/skeleton";
 
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const { user, loading } = useAuth();
+  const { isAuth, loading } = useAuth();
   return (
     <SidebarProvider>
       <SidebarInset>
@@ -27,12 +28,13 @@ export default function RootLayout({
               />
             </div>
             <div className="gap-2 flex items-center">
-              {user && !loading && (
+              {isAuth && !loading && (
                 <Button variant={"ghost"} asChild>
                   <Link href="/dashboard">Ir para meu Dashboard</Link>
                 </Button>
               )}
-              <LoginButton />
+              {loading && <Skeleton className="h-9 w-14 rounded-md" />}
+              {!loading && <LoginButton />}
             </div>
           </div>
         </header>
