@@ -1,9 +1,3 @@
-import { chain } from "@/middlewares/chain";
-import { authMiddleware } from "@/middlewares/authMiddleware";
-import { supabaseMiddleware } from "@/middlewares/supabaseMiddleware";
-
-export default chain([authMiddleware, supabaseMiddleware]);
-
 export const config = {
   matcher: [
     /*
